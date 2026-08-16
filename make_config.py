@@ -10,10 +10,10 @@ import json
 import base64
 from pathlib import Path
 
-from trae_token import load_auth_info
+from trae_token import load_auth_info, find_storage_json
 
 OUT = Path(__file__).parent / "trae_config.json"
-STORAGE_JSON = Path(r"C:\Users\ZHOUy\AppData\Roaming\TRAE SOLO CN\User\globalStorage\storage.json")
+STORAGE_JSON = Path(find_storage_json())
 
 
 def get_machine_id():

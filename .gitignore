@@ -19,7 +19,6 @@ trae_capture.jsonl
 trae_cdp_capture.jsonl
 
 # --- Reverse-engineering / debug helpers ---
-trae_token.py
 _debug_aha.py
 _decrypt_aha.py
 _decrypt_aha2.py
