@@ -1,0 +1,65 @@
+# --- Sensitive files (never commit) ---
+trae_config.json
+trae_config.jsonc
+*.pem
+*.key
+
+# --- Server scripts with credentials ---
+_ssh.py
+_upload.py
+_setcron.py
+
+# --- Logs / captures ---
+*.log
+*.jsonl
+*.txt
+mitm_out.txt
+mitm_err.txt
+trae_capture.jsonl
+trae_cdp_capture.jsonl
+
+# --- Reverse-engineering / debug helpers ---
+trae_token.py
+_debug_aha.py
+_decrypt_aha.py
+_decrypt_aha2.py
+_decrypt_auth.py
+_decrypt_device.py
+_dump_aha.py
+_dump_auth.py
+_find_m.py
+_find_m2.py
+_inspect_blob.py
+_inspect_db.py
+_jwt.py
+_search_aha.py
+_search_auth.py
+_search_clientid.py
+_search_crypto.py
+_search_exchange.py
+_search_hdr2.py
+_search_headers.py
+_test_checkin.py
+_test_refresh.py
+_test_variants.py
+_test_daily.py
+
+# --- Old UI automation / screenshots ---
+signin_result_*.png
+signin_search_results.txt
+trae_signin_log.txt
+trae_signin.py
+run_signin.bat
+search_signin.py
+locate_signin_button.py
+get_coords.py
+trae_coords.json
+test_browser.js
+
+# --- Python ---
+__pycache__/
+*.pyc
+
+# --- Node / misc dirs ---
+node_modules/
+Markdown-Word-PDF-master/
