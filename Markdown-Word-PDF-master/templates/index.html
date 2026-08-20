@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown → Word/PDF 转换</title>
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=8">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Markdown 转 Word / PDF</h1>
+    <p class="subtitle">支持 LaTeX 公式、Mermaid 图表、标准排版</p>
+  </header>
+  <div class="main">
+    <div class="editor-panel">
+      <textarea id="editor" placeholder="粘贴或输入 Markdown 内容...">{{ content or '' }}</textarea>
+      <div class="toolbar">
+        <label class="upload-btn">
+          上传 .md 文件
+          <input type="file" id="fileInput" accept=".md,.txt" hidden>
+        </label>
+        <button id="btnDocx" class="btn primary">导出 Word (.docx)</button>
+        <button id="btnPdf" class="btn secondary">导出 PDF</button>
+        <button id="btnSync" class="btn sync active" title="同步滚动（编辑器与预览联动）">
+          <span class="sync-icon">⇅</span> 同步
+        </button>
+      </div>
+      <div class="status-bar" id="statusBar" style="display:none"></div>
+    </div>
+    <div class="preview-panel">
+      <div class="preview-header">
+        <div class="view-toggle" id="viewToggle">
+          <button class="toggle-btn active" data-view="preview">实时预览</button>
+          <button class="toggle-btn" data-view="chat" id="chatToggleBtn" style="display:none">对话</button>
+        </div>
+        <span class="chat-title-label" id="chatTitle"></span>
+      </div>
+      <div id="preview"></div>
+      <div class="chat-body" id="chatBody" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<div class="loading-overlay" id="loadingOverlay" style="display:none">
+  <div class="loading-box">
+    <button id="btnCancel" class="loading-close" title="取消">×</button>
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">正在解析链接…</div>
+  </div>
+</div>
+<a class="github-float" href="https://github.com/zmj2301/Markdown-Word-PDF" target="_blank" rel="noopener" title="View on GitHub">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+</a>
+<script src="{{ url_for('static', filename='app.js') }}?v=15"></script>
+</body>
+</html>
