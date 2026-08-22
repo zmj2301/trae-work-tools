@@ -1,0 +1,20 @@
+[Unit]
+Description=Markdown to Word/PDF Converter
+After=network.target libreoffice.service
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/md-converter
+Environment=PATH=/opt/md-converter/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/opt/md-converter/venv/bin/gunicorn app:app \
+    --bind 127.0.0.1:10000 \
+    --workers 4 \
+    --timeout 120 \
+    --chdir /opt/md-converter
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
